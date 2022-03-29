@@ -15,7 +15,7 @@ I built individual models for both image and text and then built a separate mult
 
 <hr>
 
-### Only Text Model
+### 1.Only Text Model
 <b>Cleaning</b> - Removing special characters, punctuations, stopwords. Lemmatizing using WordNetLemmatizer.
 
 <b>Word Embeddings</b> - Pre-trained Glove Embeddings of 100 dimensions. The Embedding Layer was freezed during training.
@@ -23,13 +23,27 @@ I built individual models for both image and text and then built a separate mult
 <b>Model</b> - Bidirectional LSTM
 <hr>
 
-### Only Image Model
-<b> Pre-processing<b/> - Resizing images to (224,224)
-  
+### 2.Only Image Model
+<b> Pre-processing</b> - Resizing images to (224,224)
+
 <b> Model </b> - MobileNet (using pretrained weigths)
 <hr>
+
+### 3.Multi-modal Network
   
-### Multi-modal Network
- 
-<center><img src = "https://user-images.githubusercontent.com/61198990/160461817-324d9120-490a-4b97-b038-380e8dda0c74.jpg"></center>
+<p align="center">
+<img src = "https://user-images.githubusercontent.com/61198990/160461817-324d9120-490a-4b97-b038-380e8dda0c74.jpg">
+</p>
+
+In the given model, there are two parallel pipelines for text and image data which in a way perform feature extraction. The outputs of these pipelines are are concatenated into a single context vector which then passes thorugh dense layers. 
+<hr>
+
+## Evaluation
+
+## Results
+Although in terms of the metric, the multimodal model was comparable to the individual text model with an F1 score of around 94, it’s positive effect can be seen while predicting some random samples. For example: The i model classified a pink-colored make-up kit as a home product when only the image was provided but after the text was inserted, it rightly classified it as a beauty product. The model still makes errors in some obvious cases and is not able to predict random samples taken from the internet. A possible reason is that the text column is raw, messy and is comprised of advertisements rather than a clean description. Also, the images available for training are very specific and not diverse enough.
+
+## Future Scope
+
+Transformers and other complex models can be used to improve the performance. We can build a model on a bigger comprehensive dataset with more classes.
 
