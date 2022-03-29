@@ -2,14 +2,14 @@
 ## Problem Statement
 Every day, thousands of products belonging to different categories are uploaded on e-commerce websites by big brands, small businesses and regional vendors. There are a plethora of subcategories and a product might belong to multiple categories which makes it extremely important to bin it in the right one. This project aims to build a multi-modal system that can automatically assign the right category to a product based on its textual description and image.
 ## Dataset
-The dataset used is the Flipkart dataset. Along with the description and image, the dataset has a product category tree. I extracted the main parent category from it after which I ended up with a total of 27 classes. But a lot of classes had very few samples so it made sense to drop them. I decided to take the top ten classes based on their value counts. This is the distribution of the classes.
+The dataset used is the Flipkart dataset. Along with the description and image, the dataset has a product category tree for each sample. I extracted the main parent category from it after which I ended up with a total of 27 classes. But a lot of classes had very few samples so it made sense to drop them. I decided to take the top ten classes based on their value counts. This is the distribution of the classes.
 
 <img src = "https://user-images.githubusercontent.com/61198990/160457821-67f6c9ed-06f9-45aa-96d6-d723951beb1e.png" height = "400" width = "625">
 
-The original dataset can be found here.
+The original dataset can be found<a href='https://www.kaggle.com/datasets/PromptCloudHQ/flipkart-products'> here</a>.
 
 ## Web App
-I have deployed the system as a web app that can be used here. You can input either text, image or both to compare all three models.
+I have deployed the system as a web app that can be used <a href = "https://huggingface.co/spaces/param-mehta/Flipkart-project">here</a>. You can input either text, image or both to compare all three models.
 ## Approach
 I built individual models for both image and text and then built a separate multi-modal network.The preprocessing in the latter is consistent with the individual models. The metric used to evaluate the performance is F1 Score (micro average), since the dataset is imbalanced.
 
