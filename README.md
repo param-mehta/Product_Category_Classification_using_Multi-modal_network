@@ -26,7 +26,7 @@ I built individual models for both image and text and then built a separate mult
 ### 2.Only Image Model
 <b> Pre-processing</b> - Resizing images to (224,224)
 
-<b> Model </b> - MobileNet (using pretrained weigths)
+<b> Model </b> - MobileNet (using pretrained weigths). Only the dense layers added after the pretrained model were trained.
 <hr>
 
 ### 3.Multi-modal Network
@@ -35,7 +35,7 @@ I built individual models for both image and text and then built a separate mult
 <img src = "https://user-images.githubusercontent.com/61198990/160461817-324d9120-490a-4b97-b038-380e8dda0c74.jpg">
 </p>
 
-In the given model, there are two parallel pipelines for text and image data which in a way perform feature extraction. The outputs of these pipelines are are concatenated into a single context vector which then passes through dense layers. 
+In the given model, there are two parallel pipelines for text and image data which in a way perform feature extraction. The outputs of these pipelines are are concatenated into a single context vector which then passes through dense layers. The Embedding layer of the text pipeline was freezed as done in the individual model. 
 <hr>
 
 ## Evaluation
@@ -44,6 +44,8 @@ In the given model, there are two parallel pipelines for text and image data whi
 | Only Text | 99.65 | 97.46 | 98.13 |
 | Only Image | 99.9 | 90.27 | 88.83 |
 | Multi-modal | 100 | 96.04 | 94.79 |
+
+While the multi-modal model outperforms the image model, it's not as good as the text model. 
 
 ## Results
 Although in terms of the metric, the multimodal model was comparable to the individual text model with an F1 score of around 94, it’s positive effect can be observed while predicting some random samples. For example: The model misclassified a pink-colored make-up kit when only the image or text was provided but it rightly classified it as a beauty product when both were provided. The model still makes errors in some obvious cases and is not able to predict random samples taken from the internet. A possible reason is that the text column is raw, messy and is comprised of advertisements rather than a clean description. Also, the images available for training are very specific and not diverse enough.
