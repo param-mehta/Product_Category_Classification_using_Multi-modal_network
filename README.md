@@ -54,11 +54,12 @@ Transformers and other complex models can be used to improve the performance. Au
 ## Web App
 I have deployed the system as a web app that can be found <a href = "https://huggingface.co/spaces/param-mehta/Flipkart-project">here</a>. You can input either text, image or both to compare all three models.
 
-## Reproducibility
+## How to reproduce:
 1. Clone this repository
 2. Install the requirements
-3. Run train_lstm
-4. For inference, type `streamlit run app.py`
+3. Run prepare_data.py to extract categories and download the images.
+4. Download glove embeddings from <a href = 'https://nlp.stanford.edu/data/glove.6B.zip'> here </a> and store it in the glove-embeddings directory.
+5. Run train_text_model.py, train_image_model.py and train_multimodal_model.py. This will save the trained models in the models directory.
+6. For inference, type `streamlit run app.py`
 
-(Note : The folder of images has not been uploaded as it is too large. It should be in the same directory)  
 
