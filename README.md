@@ -4,9 +4,9 @@ Every day, thousands of products belonging to different categories are uploaded 
 ## Dataset
 The dataset used is the Flipkart e-commerce dataset. Along with the description and image urls, the dataset has a product category tree for each sample. I extracted the main parent category from it after which I ended up with a total of 27 classes. But a lot of classes had very few samples so it made sense to drop them. I decided to take the top ten classes based on their value counts. This is the distribution of the classes.
 
-<img src = "https://user-images.githubusercontent.com/61198990/160457821-67f6c9ed-06f9-45aa-96d6-d723951beb1e.png" height = "400" width = "625">
+<img src = "https://user-images.githubusercontent.com/61198990/161319455-7047a4ef-2062-4d43-a797-b7a135888830.png" height = "400" width = "625">
 
-The original tabular dataset can be found<a href='https://www.kaggle.com/datasets/PromptCloudHQ/flipkart-products'> here</a>. The images need to be downloaded into a folder using the url paths given in the original dataset. 
+The original tabular dataset can be found<a href='https://www.kaggle.com/datasets/PromptCloudHQ/flipkart-products'> here</a>. 
 
 ## Approach
 I built individual models for both image and text and then built a separate multi-modal network.The preprocessing in the latter is consistent with the individual models. The metric used to evaluate the performance is F1 Score (micro average), since the dataset is imbalanced. Cross validation scheme used is a simple hold-out based validation.
@@ -58,8 +58,8 @@ I have deployed the system as a web app that can be found <a href = "https://hug
 1. Clone this repository
 2. Install the requirements
 3. Run prepare_data.py to extract categories and download the images.
-4. Download glove embeddings from <a href = 'https://nlp.stanford.edu/data/glove.6B.zip'> here </a> and store it in the glove-embeddings directory.
-5. Run train_text_model.py, train_image_model.py and train_multimodal_model.py. This will save the trained models in the models directory.
+4. Download glove embeddings from <a href = 'https://nlp.stanford.edu/data/glove.6B.zip'> here </a> and store the file `glove.6B.100d.txt` in the glove-embeddings directory.
+5. Run <b>train_text_model.py, train_image_model.py</b> and <b>train_multimodal_model.py</b>. This will save the trained models in the models directory.
 6. For inference, type `streamlit run app.py`
 
 
