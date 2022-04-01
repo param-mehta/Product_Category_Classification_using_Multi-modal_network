@@ -8,8 +8,6 @@ The dataset used is the Flipkart e-commerce dataset. Along with the description 
 
 The original tabular dataset can be found<a href='https://www.kaggle.com/datasets/PromptCloudHQ/flipkart-products'> here</a>. The images need to be downloaded into a folder using the url paths given in the original dataset. 
 
-## Web App
-I have deployed the system as a web app that can be found <a href = "https://huggingface.co/spaces/param-mehta/Flipkart-project">here</a>. You can input either text, image or both to compare all three models.
 ## Approach
 I built individual models for both image and text and then built a separate multi-modal network.The preprocessing in the latter is consistent with the individual models. The metric used to evaluate the performance is F1 Score (micro average), since the dataset is imbalanced. Cross validation scheme used is a simple hold-out based validation.
 
@@ -53,7 +51,10 @@ The above numbers clearly state that it makes no sense to use multiple modalitie
 ## Future Scope 
 Transformers and other complex models can be used to improve the performance. Augmenting the images and building a model on a bigger comprehensive dataset with more classes to better assess the effectiveness of multi-modal networks. Nevertheless, it goes unsaid that multi-modal networks have a huge array of applications and it's interesting to see them being adopted for novel use cases.
 
-## Usage
+## Web App
+I have deployed the system as a web app that can be found <a href = "https://huggingface.co/spaces/param-mehta/Flipkart-project">here</a>. You can input either text, image or both to compare all three models.
+
+## Reproducibility
 1. Clone this repository
 2. Install the requirements
 3. Run train_lstm
