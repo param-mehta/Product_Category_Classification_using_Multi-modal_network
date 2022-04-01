@@ -1,0 +1,12 @@
+tensorflow
+numpy
+pandas
+opencv-python
+tqdm
+matplotlib
+sklearn
+keras
+nltk
+gensim
+Pillow
+tensorflow_addons
