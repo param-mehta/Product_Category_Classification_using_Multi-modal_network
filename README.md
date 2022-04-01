@@ -9,7 +9,7 @@ The dataset used is the Flipkart e-commerce dataset. Along with the description 
 The original tabular dataset can be found<a href='https://www.kaggle.com/datasets/PromptCloudHQ/flipkart-products'> here</a>. 
 
 ## Approach
-I built individual models for both image and text and then built a separate multi-modal network. The preprocessing in the latter is consistent with the individual models. The metric used to evaluate the performance is F1 Score (micro average), since the dataset is imbalanced. Cross validation scheme used is a simple hold-out based validation.
+I built individual models for both image and text and then built a separate multi-modal network. The preprocessing in the latter is consistent with the individual models. The metric used to evaluate the performance is F1 Score (micro average), since the dataset is imbalanced. Cross validation scheme used is a simple hold-out based validation. While there was a lot to experiment, this is the final appraoch that made it to deployment.
 
 <hr>
 
