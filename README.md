@@ -9,11 +9,11 @@ The dataset used is the Flipkart e-commerce dataset. Along with the description 
 The original tabular dataset can be found<a href='https://www.kaggle.com/datasets/PromptCloudHQ/flipkart-products'> here</a>. 
 
 ## Approach
-I built individual models for both image and text and then built a separate multi-modal network.The preprocessing in the latter is consistent with the individual models. The metric used to evaluate the performance is F1 Score (micro average), since the dataset is imbalanced. Cross validation scheme used is a simple hold-out based validation.
+I built individual models for both image and text and then built a separate multi-modal network. The preprocessing in the latter is consistent with the individual models. The metric used to evaluate the performance is F1 Score (micro average), since the dataset is imbalanced. Cross validation scheme used is a simple hold-out based validation.
 
 <hr>
 
-### 1.Only Text Model
+### 1. Only Text Model
 <b>Cleaning</b> - Removing special characters, punctuations, stopwords. Lemmatizing using WordNetLemmatizer.
 
 <b>Word Embeddings</b> - Pre-trained Glove Embeddings of 100 dimensions. The Embedding Layer was freezed during training.
@@ -21,13 +21,13 @@ I built individual models for both image and text and then built a separate mult
 <b>Model</b> - Bidirectional LSTM
 <hr>
 
-### 2.Only Image Model
+### 2. Only Image Model
 <b> Pre-processing</b> - Resizing images to (224,224)
 
 <b> Model </b> - MobileNet (using pretrained weigths). Only the dense layers added after the pretrained model were trained.
 <hr>
 
-### 3.Multi-modal Network
+### 3. Multi-modal Network
   
 <p align="center">
 <img src = "https://user-images.githubusercontent.com/61198990/160461817-324d9120-490a-4b97-b038-380e8dda0c74.jpg">
@@ -54,12 +54,19 @@ Transformers and other complex models can be used to improve the performance. Au
 ## Web App
 I have deployed the system as a web app that can be found <a href = "https://huggingface.co/spaces/param-mehta/Flipkart-project">here</a>. You can input either text, image or both to compare all three models.
 
-## How to reproduce:
+## Usage:
+You can reproduce this project on your local device by following the given steps:
 1. Clone this repository
 2. Install the requirements
-3. Run prepare_data.py to extract categories and download the images.
+3. Run <i>prepare_data.py</i> to extract categories and download the images.
 4. Download glove embeddings from <a href = 'https://nlp.stanford.edu/data/glove.6B.zip'> here </a> and store the file `glove.6B.100d.txt` in the glove-embeddings directory.
-5. Run <b>train_text_model.py, train_image_model.py</b> and <b>train_multimodal_model.py</b>. This will save the trained models in the models directory.
+5. Run the following files to train the models and save them. 
+
+    a) <i>train_text_model.py</i>
+    
+    b) <i>train_image_model.py</i> 
+    
+    c) <i>train_multimodal_model.py</i>.
 6. For inference, type `streamlit run app.py`
 
 
