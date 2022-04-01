@@ -9,9 +9,9 @@ The dataset used is the Flipkart e-commerce dataset. Along with the description 
 The original tabular dataset can be found<a href='https://www.kaggle.com/datasets/PromptCloudHQ/flipkart-products'> here</a>. The images need to be downloaded into a folder using the url paths given in the original dataset. 
 
 ## Web App
-I have deployed the system as a web app that can be used <a href = "https://huggingface.co/spaces/param-mehta/Flipkart-project">here</a>. You can input either text, image or both to compare all three models.
+I have deployed the system as a web app that can be found <a href = "https://huggingface.co/spaces/param-mehta/Flipkart-project">here</a>. You can input either text, image or both to compare all three models.
 ## Approach
-I built individual models for both image and text and then built a separate multi-modal network.The preprocessing in the latter is consistent with the individual models. The metric used to evaluate the performance is F1 Score (micro average), since the dataset is imbalanced.
+I built individual models for both image and text and then built a separate multi-modal network.The preprocessing in the latter is consistent with the individual models. The metric used to evaluate the performance is F1 Score (micro average), since the dataset is imbalanced. Cross validation scheme used is a simple hold-out based validation.
 
 <hr>
 
@@ -35,7 +35,7 @@ I built individual models for both image and text and then built a separate mult
 <img src = "https://user-images.githubusercontent.com/61198990/160461817-324d9120-490a-4b97-b038-380e8dda0c74.jpg">
 </p>
 
-In the given model, there are two parallel pipelines for text and image data which in a way perform feature extraction. The outputs of these pipelines are concatenated into a single context vector which then passes through dense layers. The Embedding layer of the text pipeline was freezed as was done in the individual model. 
+In the given model, there are two parallel pipelines for text and image data which in a way perform feature extraction. The outputs of these pipelines are concatenated into a single context vector which then passes through dense layers. The Embedding layer of the text pipeline was freezed as was done in the individual model. Extra dense layers can be added after concatenating to increase mode complexity but for this problem, it seems unnecessary.
 <hr>
 
 ## Evaluation
@@ -48,10 +48,10 @@ In the given model, there are two parallel pipelines for text and image data whi
 While the multi-modal model outperforms the image model, it's not as good as the text model. (Note : The train and validation score here refer to the scores obtained in the last epoch.) 
 
 ## Results
-Although in terms of the metric, the multimodal model wasn't as good as the individual text model, it’s positive effect can be observed while predicting some random samples. For example: The system misclassified a pink-colored make-up kit when only the image or text was provided but it rightly classified it as a beauty product when both were provided. The model still makes errors in some obvious cases and is not able to predict random samples taken from the internet. A possible reason is that the text column is raw, messy and is comprised of advertisements rather than a clean description. Also, the images available for training are very specific and not diverse enough.
+The above numbers clearly state that it makes no sense to use multiple modalities when only text does the job. But the power of the multi-modal network can be observed while predicting some random samples. For example: The system misclassified a pink-colored make-up kit when only the image or text was provided but it rightly classified it as a beauty product when both were provided. In certain cases where there is an ambiguity in a single input, having knowledge about the other modality gives an edge. The model still makes errors in some obvious cases and is not able to predict random samples taken from the internet. A possible reason is that the text column is raw, messy and is comprised of advertisements rather than a precise description. Also, the images available for training are very specific and not diverse enough.
 
 ## Future Scope 
-Transformers and other complex models can be used to improve the performance. We can build a model on a bigger comprehensive dataset with more classes.
+Transformers and other complex models can be used to improve the performance. Augmenting the images and building a model on a bigger comprehensive dataset with more classes to better assess the effectiveness of multi-modal networks. Nevertheless, it goes unsaid that multi-modal networks have a huge array of applications and it's interesting to see them being adopted for novel use cases.
 
 ## Usage
 1. Clone this repository
