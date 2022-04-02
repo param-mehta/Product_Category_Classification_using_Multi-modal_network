@@ -45,7 +45,6 @@ def build_model(num_classes):
 
 
 def main():
-    print('start')
     # importing data
     df = pd.read_csv('../data/final_data/final_data.csv')
     num_classes = df['category'].nunique()
@@ -77,7 +76,6 @@ def main():
     model_hist = model.fit(train_images, y_train, epochs=epochs, batch_size=batch_size, validation_split=val_split, callbacks=[checkpoint, stopping, reduce_lr], workers=8)
     
     # evaluating on the test set
-    model.evaluate(test_images, y_test)
     print(f'F1 score: {model.evaluate(test_images, y_test)[1]*100}')
 
     # saving the model
