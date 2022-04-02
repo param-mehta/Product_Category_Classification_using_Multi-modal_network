@@ -3,8 +3,9 @@
 Every day, thousands of products belonging to different categories are uploaded on e-commerce websites by big brands, small businesses and regional vendors. There are a plethora of subcategories and a product might belong to multiple categories which makes it extremely important to place it in the right one. This project aims to build a multi-modal system that can automatically assign the right category to a product based on its textual description and image.
 ## Dataset
 The dataset used is the <a href='https://www.kaggle.com/datasets/PromptCloudHQ/flipkart-products'> Flipkart e-commerce dataset</a>. Along with the description and image urls, the dataset has a product category tree for each sample. I extracted the main parent category from it after which I ended up with a total of 27 classes. But a lot of classes had very few samples so I decided to include only the top ten classes based on their value counts. This is the distribution of the classes.
-
+<p align="center">
 <img src = "https://user-images.githubusercontent.com/61198990/161370516-800f0c03-1773-4030-b78d-f0c8438d692e.png" height = "400" width = "625">
+</p>
 
 ## Approach
 I built individual models for both image and text and then built a separate multi-modal network. The preprocessing in the latter is consistent with the individual models. The metric used to evaluate the performance is F1 Score (micro average), since the dataset is imbalanced. Cross validation scheme used is a simple hold-out based validation. While there was a lot to experiment, this is the final appraoch that made it to deployment.
