@@ -4,7 +4,7 @@ Every day, thousands of products belonging to different categories are uploaded 
 ## Dataset
 The dataset used is the <a href='https://www.kaggle.com/datasets/PromptCloudHQ/flipkart-products'> Flipkart e-commerce dataset</a>. Along with the description and image urls, the dataset has a product category tree for each sample. I extracted the main parent category from it after which I ended up with a total of 27 classes. But a lot of classes had very few samples so I decided to include only the top ten classes based on their value counts. This is the distribution of the classes.
 
-<img src = "https://user-images.githubusercontent.com/61198990/161319455-7047a4ef-2062-4d43-a797-b7a135888830.png" height = "400" width = "625">
+<img src = "https://user-images.githubusercontent.com/61198990/161370516-800f0c03-1773-4030-b78d-f0c8438d692e.png" height = "400" width = "625">
 
 ## Approach
 I built individual models for both image and text and then built a separate multi-modal network. The preprocessing in the latter is consistent with the individual models. The metric used to evaluate the performance is F1 Score (micro average), since the dataset is imbalanced. Cross validation scheme used is a simple hold-out based validation. While there was a lot to experiment, this is the final appraoch that made it to deployment.
@@ -12,17 +12,14 @@ I built individual models for both image and text and then built a separate mult
 <hr>
 
 ### 1. Only Text Model
-<b>Cleaning</b> - Removing special characters, punctuations, stopwords. Lemmatizing using WordNetLemmatizer.
-
-<b>Word Embeddings</b> - Pre-trained Glove Embeddings of 100 dimensions. The Embedding Layer was freezed during training.
-
-<b>Model</b> - Bidirectional LSTM
+* <b>Cleaning</b> - Removing special characters, punctuations, stopwords. Lemmatizing using WordNetLemmatizer.<br>
+* <b>Embeddings</b> - Pre-trained Glove Embeddings of 100 dimensions. The Embedding Layer was freezed during training.<br>
+* <b>Model</b> - Bidirectional LSTM
 <hr>
 
 ### 2. Only Image Model
-<b> Pre-processing</b> - Resizing images to (224,224).
-
-<b> Model </b> - MobileNet (using pretrained weigths). Only the dense layers added after the pretrained model were trained.
+* <b> Pre-processing</b> - Resizing images to (224,224).<br>
+* <b> Model </b> - MobileNet (using pretrained weigths). Only the dense layers added after the pretrained model were trained.
 <hr>
 
 ### 3. Multi-modal Network
