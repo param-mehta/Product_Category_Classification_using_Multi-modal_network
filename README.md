@@ -18,7 +18,7 @@ I built individual models for both image and text and then built a separate mult
 <hr>
 
 ### 2. Only Image Model
-* <b> Pre-processing</b> - Resizing images to (224,224).<br>
+* <b> Preprocessing</b> - Resizing images to (224,224).<br>
 * <b> Model </b> - MobileNet (using pretrained weigths). Only the dense layers added after the pretrained model were trained.
 <hr>
 
