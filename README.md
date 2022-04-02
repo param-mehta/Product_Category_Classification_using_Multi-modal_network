@@ -1,4 +1,4 @@
-# Product-Category-Classification-using-Multi-modal-network
+# Product Category Classification using Multi-modal network
 ## Problem Statement
 Every day, thousands of products belonging to different categories are uploaded on e-commerce websites by big brands, small businesses and regional vendors. There are a plethora of subcategories and a product might belong to multiple categories which makes it extremely important to place it in the right one. This project aims to build a multi-modal system that can automatically assign the right category to a product based on its textual description and image.
 ## Dataset
