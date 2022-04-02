@@ -20,7 +20,7 @@ I built individual models for both image and text and then built a separate mult
 <hr>
 
 ### 2. Only Image Model
-<b> Pre-processing</b> - Resizing images to (224,224)
+<b> Pre-processing</b> - Resizing images to (224,224).
 
 <b> Model </b> - MobileNet (using pretrained weigths). Only the dense layers added after the pretrained model were trained.
 <hr>
@@ -41,7 +41,7 @@ In the given model, there are two parallel pipelines for text and image data whi
 | Only Image | 99.9 | 90.27 | 88.83 |
 | Multi-modal | 100 | 96.04 | 94.79 |
 
-While the multi-modal model outperforms the image model, it's not as good as the text model. (Note : The train and validation score here refer to the scores obtained in the last epoch.) 
+While the multi-modal model outperforms the image model, it's not as good as the text model. (Note : The train and validation score here refer to the scores obtained in the last epoch) 
 
 ## Results
 The above numbers clearly state that it's superfluous to use multiple modalities when only text does the job. But the power of the multi-modal network can be observed while predicting some random samples. For example: The system misclassified a pink-colored make-up kit when only the image or text was provided but it rightly classified it as a beauty product when both were provided. In certain cases where there is an ambiguity in a single input, having knowledge about the other modality gives an edge. The model still makes errors in some obvious cases and is not able to predict random samples taken from the internet. A possible reason is that the text column is raw, messy and is comprised of advertisements rather than a precise description. Also, the images available for training are very specific and not diverse enough.
@@ -54,18 +54,18 @@ I have deployed the system as a web app that can be found <a href = "https://hug
 
 ## Usage:
 You can reproduce this project on your local device by following the given steps:
-1. Clone this repository
-2. Install the requirements
+1. Clone this repository.
+2. Install the requirements.
 3. Download the <a href="https://www.kaggle.com/datasets/PromptCloudHQ/flipkart-products">original dataset.</a>
 4. Run <i>prepare_data.py</i> to extract categories, download the images and prepare the final csv file.
 5. Download <a href = 'https://nlp.stanford.edu/data/glove.6B.zip'> glove embeddings </a> and store the file `glove.6B.100d.txt` in the glove-embeddings directory.
 6. Run the following files to train the models and save them. 
 
-    a) <i>train_text_model.py</i>
+    * <i>train_text_model.py</i>
     
-    b) <i>train_image_model.py</i> 
+    * <i>train_image_model.py</i> 
     
-    c) <i>train_multimodal_model.py</i>.
-7. For inference, type `streamlit run app.py`
+    * <i>train_multimodal_model.py</i>
+7. For inference, type `streamlit run app.py`.
 
 
