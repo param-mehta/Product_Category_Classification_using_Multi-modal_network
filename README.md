@@ -1,6 +1,6 @@
 # Product Category Classification using Multi-modal network
 ## Problem Statement
-Every day, thousands of products belonging to different categories are uploaded on e-commerce websites by big brands, small businesses and regional vendors. There are a plethora of subcategories and a product might belong to multiple categories which makes it extremely important to place it in the right one. This project aims to build a multi-modal system that can automatically assign the right category to a product based on its textual description and image.
+Every day, thousands of products belonging to different categories are uploaded on e-commerce websites by big brands, small businesses and regional vendors. These products are categorised on simple text based classification systems which are often not enough. Improving these systems can have a massive impact on the discoverability and sales of these products. This project aims to build a multi-modal system that can automatically assign the right category to a product based on its textual description and image. 
 ## Dataset
 The dataset used is the <a href='https://www.kaggle.com/datasets/PromptCloudHQ/flipkart-products'> Flipkart e-commerce dataset</a>. Along with the description and image urls, the dataset has a product category tree for each sample. We extracted the main parent category from it after which we ended up with a total of 27 classes. But a lot of classes had very few samples so we decided to include only the top ten classes based on their value counts. This is the distribution of the classes.
 <p align="center">
@@ -35,20 +35,22 @@ In the given model, there are two parallel pipelines for text and image data whi
 ## Evaluation
 | Model | Train score | Validation score | Test Score |
 | --- | --- | --- | --- |
-| Only Text | 99.65 | 97.46 | 98.13 |
-| Only Image | 99.9 | 90.27 | 88.83 |
-| Multi-modal | 100 | 96.04 | 94.79 |
+| Only Text | 93.65 | 89.46 | 89.13 |
+| Only Image | 90.9 | 87.27 | 86.09 |
+| Multi-modal | 97.67 | 90.44 | 92.39 |
 
-While the multi-modal model outperforms the image model, it's not as good as the text model. (Note : The train and validation score here refer to the scores obtained in the last epoch) 
+The multimodal network outperforms both the individual models significantly. However, it's also more prone to overfitting.
 
 ## Results
-The above numbers clearly state that it's superfluous to use multiple modalities when only text does the job. But the power of the multi-modal network can be observed while predicting some random samples. For example: The system misclassified a pink-colored make-up kit when only the image or text was provided but it rightly classified it as a beauty product when both were provided. In certain cases where there is an ambiguity in a single input, having knowledge about the other modality gives an edge. The model still makes errors in some obvious cases and is not able to predict random samples taken from the internet. A possible reason is that the text column is raw, messy and is comprised of advertisements rather than a precise description. Also, the images available for training are very specific and not diverse enough.
+- The above numbers clearly state the power of the multi-modal network. However, there were many instances that were correctly classified by individual models but misclassified by the the former. For certain categories, the knowledge of either modality is sufficient and combing both inputs rather adds more noise to the data. A dynamic approach can be used during inference where you use the multimodal neural network only for those categories where you recorded consistent improvement during testing.
+  
+- The model is also not able to predict random samples taken from the internet. A possible reason is that the text column is raw, messy and is comprised of advertisements rather than a precise description. Also, the images available for training are very specific and not diverse enough.
 
 ## Future Scope 
 Transformers and other complex models can be used to improve the performance. Augmenting the images and building a model on a bigger comprehensive dataset with more classes to better assess the effectiveness of multi-modal networks. Nevertheless, it goes unsaid that multi-modal networks have a huge array of applications and it's interesting to see them being adopted for novel use cases.
 
 ## Web App
-We have deployed the system as a web app that can be found <a href = "https://huggingface.co/spaces/param-mehta/Flipkart-project">here</a>. You can input either text, image or both to compare all three models.,
+We have deployed the system as a web app that can be found <a href = "https://huggingface.co/spaces/param-mehta/Flipkart-project">here</a>. You can input either text, image or both to compare all three models.
 
 ## Usage:
 You can reproduce this project on your local device by following the given steps:
